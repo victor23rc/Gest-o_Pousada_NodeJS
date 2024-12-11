@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="icon" href="img/icon_pousada1.png" type="image/x-icon">
+    <title>Login | Matuto's</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/Po-pousada (1).png" alt="logo"></a>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="login">
+            <form id="login-form" class="box-input">
+                <h2>Entrar</h2>
+                <input type="email" id="login-email" placeholder="E-mail" required>
+                <input type="password" id="login-password" placeholder="Senha" required>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+            <div class="support">
+                <div class="remember">
+                    <span><input type="checkbox" id="check"></span>
+                    <label for="check">Lembre-se de mim</label>
+                </div>
+            </div>
+            <p class="description_footer">Está página é protegida pelo Google reCAPTCHA para garantir que você não é
+                robô. <span>Saiba Mais</span></p>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const senha = document.getElementById("login-password").value;
+
+            if (!email || !senha) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+            const loginData = {
+                Email: email,
+                Senha: senha
+            };
+
+            try {
+                const response = await fetch("http://localhost:3009/auth/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(loginData)
+                });
+
+
+                const data = await response.json();
+
+                if (response.ok) {
+
+                    alert("Login realizado com sucesso!");
+                    localStorage.setItem("token", data.token);
+
+                    window.location.href = "../dash_Pousada/indexs/dashboard.html";
+                } else {
+
+                    alert(data.msg || "Erro desconhecido. Tente novamente mais tarde.");
+                }
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                alert("Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.");
+            }
+        });
+    </script>
+</body>
+
+</html>

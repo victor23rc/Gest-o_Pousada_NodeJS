@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reservas | Matuto's</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="img/favicon.icon" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style_reservas.css" rel="stylesheet">
+    <link rel="icon" href="img/icon_pousada1.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <header>
+            <nav class="nav">
+                <a href="index.html" class="logo"><img src="img/icon_pousada.png" alt="nav_logo"></a>
+                <button class="menu_burguer"></button>
+                <ul class="nav_list">
+                    <li class="nav_item">
+                        <a href="index.html">Ínicio</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="contact.html">Contato</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="reservas.html">Reservas</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="login.html">Sistema</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/Rectangle\ 1.svg);">
+            <div class="container-fluid page-header-inner py-5">
+                <div class="container text-center pb-5">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Reservas</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">ínicio</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Reservas</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Quartos</h6>
+                    <h1 class="mb-5"><span class="text-primary">Todos</span> quartos</h1>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/quarto1.jpg" alt="">
+                                <small
+                                    class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">R$320 /noite
+                                </small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Quarto | Luxo</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>4
+                                        Camas</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                        Banheiro</small>
+                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                </div>
+                                <p class="text-body mb-3">Um espaço elegante e acolhedor, perfeito para quem busca uma experiência de estadia requintada e relaxante.
+                                </p>
+                                <a href="quarto1.html"><button id="reservarBtn"
+                                        class="btn btn-sm btn-dark rounded py-2 px-4">Reservar Agora</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/quarto2.jpeg" alt="">
+                                <small
+                                    class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">R$230 /noite</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Quarto | Premium</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>4
+                                        Camas</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1
+                                        Banheiro</small>
+                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                </div>
+                                <p class="text-body mb-3">Desfrute de conforto e sofisticação em um ambiente exclusivo, com decoração refinada e comodidades premium.</p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/Pousada_Pousada/quarto2.html"><button id="reservarBtn" class="btn btn-sm btn-dark rounded py-2 px-4"
+                                        data-room="2">Reservar Agora</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/quarto3.jpg" alt="">
+                                <small
+                                    class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">R$100 /noite</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Quarto | Standard</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
+                                        Camas</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1
+                                        Banheiro</small>
+                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                </div>
+                                <p class="text-body mb-3">Conforto e praticidade em um ambiente aconchegante, ideal para quem procura um bom descanso com qualidade.
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/Pousada_Pousada/quarto3.html"><button id="reservarBtn" class="btn btn-sm btn-dark rounded py-2 px-4"
+                                        data-room="3">Reservar Agora</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-xxl py-5">
+                    <div class="container">
+                        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <h6 class="section-title text-center text-primary text-uppercase">Serviços</h6>
+                            <h1 class="mb-5">Sobre nossos <span class="text-primary text-uppercase">Serviços</span></h1>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <a class="service-item rounded">
+                                    <div class="service-icon bg-transparent border rounded p-1">
+                                        <div
+                                            class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                            <img src="img/mug-saucer-solid.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-3">Café da manhã</h5>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                <a class="service-item rounded">
+                                    <div class="service-icon bg-transparent border rounded p-1">
+                                        <div
+                                            class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                            <img src="img/fan-solid.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-3">Ar Condicionado</h5>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                                <a class="service-item rounded">
+                                    <div class="service-icon bg-transparent border rounded p-1">
+                                        <div
+                                            class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                            <img src="img/wifi-solid.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-3">Internet Wi-fi</h5>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+            <div class="container text-center">
+                <small>&copy;2024 Pousada Matuto's - Todos os direitos reservados.</small>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundl,e.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>

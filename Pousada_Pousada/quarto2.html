@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Quarto | Premium | Matuto's</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="img/favicon.icon" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css">
+
+    <link rel="icon" href="img/icon_pousada1.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <header>
+            <nav class="nav">
+                <a href="index.html" class="logo"><img src="img/icon_pousada.png" alt="nav_logo"></a>
+                <button class="menu_burguer"></button>
+                <ul class="nav_list">
+                    <li class="nav_item">
+                        <a href="index.html">Ínicio</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="contact.html">Contato</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="reservas.html">Reservas</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="login.html">Sistema</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/Rectangle\ 1.svg);">
+            <div class="container-fluid page-header-inner py-5">
+                <div class="container text-center pb-5">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Quarto | Premium</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Reservas</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Quarto | Premium</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel"
+                style="max-width: 600px; margin-right: 20px;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./img/quarto1.jpg" class="d-block w-100" alt="Imagem 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/quarto2.jpeg" class="d-block w-100" alt="Imagem 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/quarto3.jpg" class="d-block w-100" alt="Imagem 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+
+            <div class="flex-fill">
+                <h3>Formulário de Reserva</h3>
+                <form id="registrationForm">
+                    <div class="mb-3">
+                        <label for="adults" class="form-label">Adultos</label>
+                        <select class="form-select" id="adults" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="children" class="form-label">Crianças</label>
+                        <select class="form-select" id="children" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select> checkin checkout
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkin" class="form-label">Data de Check-in</label>
+                        <input type="date" id="checkin" name="checkin" onchange="highlightSelectedDays()">
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkout" class="form-label">Data de Check-out</label>
+                        <input type="date" id="checkout" name="checkout" onchange="highlightSelectedDays()">
+                    </div>
+                    <div class="reservar-container">
+                        <div class="preco-container">
+                            <span class="preco">R$ <span id="preco-valor">230,00</span></span>
+                        </div>
+                        <button class="btn-reservar" data-room-id="2">Reservar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container my-4">
+            <h2 class="h4">Quarto | Premium</h2>
+
+            <div class="row mb-3">
+                <div class="col text-center">
+                    <i class="bi bi-wifi" style="font-size: 1.5rem;"></i><br> Wi-Fi
+                </div>
+                <div class="col text-center">
+                    <i class="bi bi-thermometer" style="font-size: 1.5rem;"></i><br> Ar-Condicionado
+                </div>
+                <div class="col text-center">
+                    <i class="bi bi-cup" style="font-size: 1.5rem;"></i><br> Cafeteira
+                </div>
+                <div class="col text-center">
+                    <i class="bi bi-slash-circle" style="font-size: 1.5rem;"></i><br> Proibido fumar
+                </div>
+                <div class="col text-center">
+                    <i class="bi bi-basket" style="font-size: 1.5rem;"></i><br> Café da manhã
+                </div>
+            </div>
+
+            <h6>Descubra o refúgio perfeito na Praia do Rosa! Nosso quarto é um espaço acolhedor e arejado, ideal para
+                quem busca conforto e tranquilidade. Com vistas deslumbrantes para o mar e a natureza exuberante ao
+                redor, você poderá relaxar e se reconectar com a beleza do lugar.
+                Equipado com Wi-Fi, ar-condicionado, e uma cafeteira para o seu conforto, este quarto é a escolha ideal
+                para casais ou famílias que desejam explorar as maravilhas da região. O ambiente é livre de fumaça,
+                garantindo uma estadia agradável e saudável. Além disso, desfrute de um delicioso café da manhã
+                incluído, para começar o dia com energia.
+                Venha viver momentos inesquecíveis na Praia do Rosa, onde cada amanhecer traz a promessa de novas
+                aventuras!</h6>
+        </div>
+
+
+        <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s" style="margin-bottom: 30px; margin-top: 30px; padding: 25px;">
+            <iframe class="position-relative rounded w-100 h-100"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8965771662236!2d-48.6497961!3d-28.1292979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9526cc1fa0854bc3%3A0x845bb5b1c82513d9!2sPraia%20do%20Rosa!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+        </div>
+
+        <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+            <div class="container text-center">
+                <small>&copy;2024 Pousada Matuto's - Todos os direitos reservados.</small>
+            </div>
+        </footer>
+
+        <div id="confirmModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmação da Reserva</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confira as informações preenchidas:</p>
+                        <p><strong>Adultos:</strong> <span id="modal-adults"></span></p>
+                        <p><strong>Crianças:</strong> <span id="modal-children"></span></p>
+                        <p><strong>Check-in:</strong> <span id="modal-checkin"></span></p>
+                        <p><strong>Check-out:</strong> <span id="modal-checkout"></span></p>
+                        <p><strong>Total:</strong> R$ <span id="modal-price"></span></p>
+
+                        <hr>
+                        <h5>Informações do Hóspede</h5>
+                        <form id="guestForm">
+                            <div class="mb-3">
+                                <label for="guestName" class="form-label">Nome do Hóspede</label>
+                                <input type="text" class="form-control" id="guestName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="guestCPF" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="guestCPF" maxlength="11" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="guestPhone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="guestPhone" maxlength="15" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="guestEmail" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="guestEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="paymentMethod" class="form-label">Forma de Pagamento</label>
+                                <select id="paymentMethod" class="form-select" required>
+                                    <!-- As opções serão carregadas aqui -->
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" data-room-id="2" onclick="cadastrarReserva()">Confirmar
+                                    Reserva</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/reservas.js"></script>
+
+</body>
+
+</html>

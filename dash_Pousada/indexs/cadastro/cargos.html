@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/styleDash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css" />
+    <link rel="icon" href="../../../Pousada_Pousada/img/icon_pousada1.png" type="image/x-icon">
+  <title>Cargos | Pousada Matuto's</title>
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <h1><span class="fa-solid fa-hotel"> </span> <span>Matutos's</span></h1>
+      </div>
+
+      <div class="sidebar-menu">
+        <ul>
+          <li>
+            <a href="../../indexs/dashboard.html" class="active">
+              <span class="fas fa-tachometer-alt"></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="fa-solid fa-users"></span>
+              <span>Pessoas</span>
+            </a>
+            <ul>
+              <a href="../pessoas/hospedes.html">• Hóspedes</a>
+            </ul>
+            <ul>
+              <a href="../pessoas/funcionarios.html">• Funcionários</a>
+            </ul>
+            <ul>
+              <a href="../pessoas/usuarios.html">• Usuários</a>
+            </ul>
+          </li>
+          <li>
+            <a href="#">
+              <span class="fa-solid fa-circle-plus"></span>
+              <span>Cadastro</span>
+            </a>
+            <ul>
+              <a href="./quartos.html">• Quartos</a>
+            </ul>
+            <ul>
+              <a href="./cargos.html" style="    background: #fff;
+              padding-top: 0.5rem;
+              padding-bottom: 0.5rem;
+              color: var(--main-color);
+              border-radius: 30px 0px 0px 30px;">• Cargos</a>
+            </ul>
+            <ul>
+              <a href="./pagamento.html">• Formas de pagamento</a>
+            </ul>
+          </li>
+          <li>
+            <a href="#">
+              <span class="fa-solid fa-calendar-days"></span>
+              <span>Reservas</span>
+            </a>
+            <ul>
+              <a href="../reserva/reserva.html">• Reservas</a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <h2>
+          <label for="nav-toggle">
+            <span class="fas fa-bars"></span>
+          </label>
+          Dashboard
+        </h2>
+
+        <div class="user-wrapper">
+          <img
+            src="https://encurtador.com.br/p1m6R"
+            width="40px"
+            height="40px"
+            alt="foto-perfil"
+          />
+          <div class="">
+            <h4>Emerson Barros</h4>
+            <div class="adminBox"> 
+              <small>Admin</small>
+              <small><a href="../../../Pousada_Pousada/index.html" class="exit">Sair</a></small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="dashContent">
+        <div class="card-header">
+          <button id="openModalCargos" class="fa-solid fa-plus hostageBtn">
+            Cargo
+          </button>
+        </div>
+
+        <div id="modalCargos" class="modal">
+          <div class="modal-content">
+            <div class="topModal">
+              <span class="closeModalCargos fa-solid fa-xmark"></span>
+              <h2>Inserir Registro</h2>
+            </div>
+            <form id="registrationForm">
+              <label for="NomeCargo">Nome:</label>
+              <input type="text" id="NomeCargo" name="NomeCargo" required />
+        
+              <label for="Salario">Salário:</label>
+              <input
+                type="text"
+                id="Salario"
+                name="Salario"
+              />
+        
+              <label for="Descricao">Descrição:</label>
+              <input type="text" id="Descricao" name="Descricao" required />
+        
+              <div>
+                <button type="submit" id="submitButton" class="modalBtn">Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="recent-grid">
+          <div class="projects">
+            <div class="card">
+              <div class="card-header">
+                <h2>Cargos</h2>
+                <button>
+                  Ver Todos <span class="fas fa-arrow-right"></span>
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table width="100%">
+                    <thead>
+                      <tr>
+                        <td>Nome</td>
+                        <td>Salário</td>
+                        <td>Descrição</td>
+                      </tr>
+                    </thead>
+                    <tbody id="cargoTableBody">
+                      <!-- Os cargos serão adicionados aqui dinamicamente via JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    
+  </body>
+</html>
+<script src="../js/script.js"></script>
+<script src="../../js/modal.js"></script>
+<script src="../../js/cargosCadastro.js"></script>

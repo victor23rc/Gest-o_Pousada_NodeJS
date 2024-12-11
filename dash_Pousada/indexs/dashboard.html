@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="../styles/styleDash.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css" />
+  <link rel="icon" href="../../Pousada_Pousada/img/icon_pousada1.png" type="image/x-icon">
+  <title>Dashboard | Pousada Matuto's</title>
+</head>
+
+<body>
+  <input type="checkbox" id="nav-toggle" />
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <h1><span class="fa-solid fa-hotel"> </span> <span>Matuto's</span></h1>
+    </div>
+
+    <div class="sidebar-menu">
+      <ul>
+        <li>
+          <a href="dashboard.html" class="active" style="    background: #fff;
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            color: var(--main-color);
+            border-radius: 30px 0px 0px 30px;">
+            <span class="fas fa-tachometer-alt"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa-solid fa-users"></span>
+            <span>Pessoas</span>
+          </a>
+          <ul>
+            <a href="./pessoas/hospedes.html">• Hóspedes</a>
+          </ul>
+          <ul>
+            <a href="./pessoas/funcionarios.html">• Funcionários</a>
+          </ul>
+          <ul>
+            <a href="./pessoas/usuarios.html">• Usuários</a>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa-solid fa-circle-plus"></span>
+            <span>Cadastro</span>
+          </a>
+          <ul>
+            <a href="./cadastro/quartos.html">• Quartos</a>
+          </ul>
+          <ul>
+            <a href="./cadastro/cargos.html">• Cargos</a>
+          </ul>
+          <ul>
+            <a href="./cadastro/pagamento.html">• Formas de pagamento</a>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <span class="fa-solid fa-calendar-days"></span>
+            <span>Reservas</span>
+          </a>
+          <ul>
+            <a href="./reserva/reserva.html">• Reservas</a>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h2>
+        <label for="nav-toggle">
+          <span class="fas fa-bars"></span>
+        </label>
+        Dashboard
+      </h2>
+
+      <div class="search-wrapper">
+        <span class="fas fa-search"></span>
+        <input id="searchInput" type="search" placeholder="Digite o ID da Reserva" />
+      </div>
+
+
+      <!-- Pop-up para mostrar as informações da reserva -->
+      <div id="reservationPopup" class="popup">
+        <div class="popup-content">
+          <span class="popup-close" id="popupClose">&times;</span>
+          <h2>Detalhes da Reserva</h2>
+          <p><strong>ID da Reserva:</strong> <span id="popupIdReserva"></span></p>
+          <p><strong>Data de Entrada:</strong> <span id="popupEntrada"></span></p>
+          <p><strong>Data de Saída:</strong> <span id="popupSaida"></span></p>
+          <p><strong>Quantidade de Hóspedes:</strong> <span id="popupQuantidadeHospedes"></span></p>
+          <p><strong>Valor Total:</strong> <span id="popupValorTotal"></span></p>
+          <p><strong>Nome:</strong> <span id="popupNome"></span></p>
+          <p><strong>CPF:</strong> <span id="popupCPF"></span></p>
+          <p><strong>Telefone:</strong> <span id="popupTelefone"></span></p>
+          <p><strong>Email:</strong> <span id="popupEmail"></span></p>
+          <p><strong>Número do Quarto:</strong> <span id="popupNumeroQuarto"></span></p>
+
+          <h3>Quarto</h3>
+          <p><strong>Descrição:</strong> <span id="popupDescricaoQuarto"></span></p>
+          <p><strong>Tipo:</strong> <span id="popupTipoQuarto"></span></p>
+          <p><strong>Valor do Quarto:</strong> <span id="popupValorQuarto"></span></p>
+        </div>
+      </div>
+
+
+      <div id="reservationDetails">
+        <!-- Aqui serão exibidos os detalhes da reserva -->
+      </div>
+
+      <div class="user-wrapper">
+        <img src="https://encurtador.com.br/p1m6R" width="40px" height="40px" alt="foto-perfil" />
+        <div class="">
+          <h4>Emerson Barros</h4>
+          <div class="adminBox"> 
+            <small>Admin</small>
+            <small><a href="../../Pousada_Pousada/index.html" class="exit" onclick="return confirmarSaida();">Sair</a></small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="dashContent">
+      <div class="cards">
+        <div class="card-single">
+          <div>
+            <h1 id="pessoasAlocadas">0</h1>
+            <span>Pessoas Alocadas</span>
+          </div>
+          <div>
+            <span class="fas fa-users"></span>
+          </div>
+        </div>
+        <div class="card-single">
+          <div>
+            <h1 id="quartosLocados">0</h1>
+            <span>Quartos Locados</span>
+          </div>
+          <div>
+            <span class="fas fa-clipboard-list"></span>
+          </div>
+        </div>
+        <div class="card-single">
+          <div>
+            <h1 id="quantidadeReservas">0</h1>
+            <span>Reservas</span>
+          </div>
+          <div>
+            <span class="fas fa-shopping-cart"></span>
+          </div>
+        </div>
+        <div class="card-single">
+          <div>
+            <h1 id="balancoMensal">R$0</h1>
+            <span>Balanço Mensal</span>
+          </div>
+          <div>
+            <span class="fas fa-wallet"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-grid">
+        <div class="projects">
+          <div class="card">
+            <div class="card-header">
+              <h2>Acomodações</h2>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <td>Quarto</td> <!-- TipoQuarto tipo do quarto -->
+                      <td>Numero do Quarto</td> <!-- NumeroQuarto -->
+                      <td>ID da Reserva</td> <!-- ID da reserva -->
+                      <td>Data de Saída</td> <!-- Data de saída -->
+                      <td>Status</td> <!-- reservado ou Livre -->
+
+                    </tr>
+                  </thead>
+                  <tbody id="table-body">
+                    <!-- Os dados de quartos serão inseridos aqui dinamicamente -->
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+
+</html>
+<script src="../js/script.js"></script>
+<script src="../js/dashboard.js"></script>
