@@ -1,10 +1,10 @@
 document.getElementById('registrationForm').addEventListener('submit', async function(e) {
-    e.preventDefault();  // Impede o envio padrão do formulário
+    e.preventDefault();  
 
     const nomePagamento = document.getElementById('name').value;
     const descricao = document.getElementById('descricao').value;
 
-    // Verificando se os campos foram preenchidos
+  
     if (!nomePagamento || !descricao) {
         alert("Todos os campos são obrigatórios!");
         return;
@@ -17,45 +17,45 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     };
 
     try {
-        // Verificar se estamos editando ou criando
+        
         if (this.dataset.editing) {
-            // Estamos editando uma forma de pagamento, enviar uma requisição PUT
+            
             const id = this.dataset.editing;
             const response = await fetch(`http://localhost:3009/formasPagamento/alterar/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(dados),  // Enviar os dados alterados
+                body: JSON.stringify(dados),  
             });
 
             const result = await response.json();
 
             if (response.ok) {
                 alert("Forma de pagamento atualizada com sucesso!");
-                loadFormasPagamento(); // Recarregar as formas de pagamento
-                document.getElementById('registrationForm').reset(); // Limpar o formulário
-                this.dataset.editing = ''; // Limpar o ID de edição
-                toggleFormVisibility(false); // Ocultar o formulário após a edição
+                loadFormasPagamento(); 
+                document.getElementById('registrationForm').reset(); 
+                this.dataset.editing = ''; 
+                toggleFormVisibility(false); 
             } else {
                 alert(result.msg || "Erro ao atualizar forma de pagamento.");
             }
         } else {
-            // Caso contrário, estamos criando uma nova forma de pagamento
+       
             const response = await fetch('http://localhost:3009/formasPagamento/cadastrar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(dados),  // Enviar os dados para criação
+                body: JSON.stringify(dados),  
             });
 
             const result = await response.json();
 
             if (response.ok) {
                 alert("Forma de pagamento cadastrada com sucesso!");
-                loadFormasPagamento(); // Recarregar as formas de pagamento
-                document.getElementById('registrationForm').reset(); // Limpar o formulário
+                loadFormasPagamento(); 
+                document.getElementById('registrationForm').reset(); 
             } else {
                 alert(result.msg || "Erro ao cadastrar forma de pagamento.");
             }
@@ -70,13 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFormasPagamento();
 });
 
-// Função para carregar as formas de pagamento
+
 function loadFormasPagamento() {
     fetch('http://localhost:3009/formasPagamento/Lista')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('formasPagamentoTableBody');
-            tableBody.innerHTML = ''; // Limpar a tabela antes de adicionar novas linhas
+            tableBody.innerHTML = ''; 
 
             data.forEach(forma => {
                 const row = document.createElement('tr');
@@ -95,7 +95,7 @@ function loadFormasPagamento() {
                 editIcon.setAttribute('data-id', forma.IDFormaPagamento);
                 editIcon.addEventListener('click', (event) => {
                     const id = event.target.getAttribute('data-id');
-                    editFormaPagamento(id);  // Chama a função de editar passando o ID
+                    editFormaPagamento(id);  // id do editar
                 });
 
                 // Criar ícone de excluir
@@ -107,7 +107,7 @@ function loadFormasPagamento() {
                 deleteIcon.addEventListener('click', (event) => {
                     const id = event.target.getAttribute('data-id');
                     if (confirm("Tem certeza que deseja excluir essa forma de pagamento?")) {
-                        deleteFormaPagamento(id);  // Chama a função de deletar passando o ID
+                        deleteFormaPagamento(id);  
                     }
                 });
 
@@ -126,22 +126,22 @@ function loadFormasPagamento() {
 }
 
 
-// Função para editar a forma de pagamento
+
 function editFormaPagamento(id) {
-    // Buscar os dados da forma de pagamento a ser editada
+ 
     fetch(`http://localhost:3009/formasPagamento/${id}`)
         .then(response => response.json())
         .then(data => {
-            console.log("Dados recebidos para edição:", data);  // Log para verificar os dados recebidos
+            console.log("Dados recebidos para edição:", data);  
 
-            // Exibir o pop-up de edição
+         
             togglePopupVisibility(true);
 
-            // Preencher o formulário com os dados da forma de pagamento
+
             document.getElementById('name').value = data.NomePagamento;
             document.getElementById('descricao').value = data.Descricao;
 
-            // Configurar o formulário para edição (armazena o ID da forma de pagamento)
+        
             const form = document.getElementById('editFormPG');
             form.dataset.editing = id;
         })
@@ -152,7 +152,7 @@ function editFormaPagamento(id) {
 }
 
 
-// Função para alternar a visibilidade do pop-up de edição
+
 function togglePopupVisibility(visible) {
     const popup = document.getElementById('editPopup');
     popup.style.display = visible ? 'block' : 'none';
@@ -161,15 +161,15 @@ function togglePopupVisibility(visible) {
 
 
 
-// Evento de envio do formulário de edição
-document.getElementById('editFormPG').addEventListener('submit', async function(e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
 
-    // Alterando para os novos IDs dos campos no formulário pop-up
+document.getElementById('editFormPG').addEventListener('submit', async function(e) {
+    e.preventDefault(); 
+
+
     const nomePagamento = document.getElementById('namePUT').value;
     const descricao = document.getElementById('descricaoPUT').value;
 
-    // Verificando se os campos foram preenchidos
+
     if (!nomePagamento || !descricao) {
         alert("Todos os campos são obrigatórios!");
         return;
@@ -180,9 +180,9 @@ document.getElementById('editFormPG').addEventListener('submit', async function(
         Descricao: descricao
     };
 
-    const id = this.dataset.editing; // Obter o ID da forma de pagamento a ser editada
+    const id = this.dataset.editing; 
 
-    console.log("Dados a serem enviados para a API:", dados);  // Log para verificar os dados antes de enviar à API
+    console.log("Dados a serem enviados para a API:", dados);  
 
     try {
         const response = await fetch(`http://localhost:3009/formasPagamento/alterar/${id}`, {
@@ -194,12 +194,12 @@ document.getElementById('editFormPG').addEventListener('submit', async function(
         });
 
         const result = await response.json();
-        console.log("Resposta da API após atualização:", result);  // Log para verificar a resposta da API
+        console.log("Resposta da API após atualização:", result);  
 
         if (response.ok) {
             alert("Forma de pagamento atualizada com sucesso!");
-            loadFormasPagamento(); // Recarregar as formas de pagamento
-            togglePopupVisibility(false); // Fechar o pop-up após a edição
+            loadFormasPagamento(); 
+            togglePopupVisibility(false); 
         } else {
             alert(result.msg || "Erro ao atualizar forma de pagamento.");
         }
@@ -211,7 +211,7 @@ document.getElementById('editFormPG').addEventListener('submit', async function(
 
 
 
-// Função para alternar a visibilidade do pop-up de edição
+
 function togglePopupVisibility(visible) {
     const popup = document.getElementById('editPopup');
     popup.style.display = visible ? 'block' : 'none';
@@ -221,7 +221,7 @@ function togglePopupVisibility(visible) {
 
 
 document.getElementById('editFormPG').addEventListener('submit', async function(e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
+    e.preventDefault(); 
 
     const nomePagamento = document.getElementById('name').value;
     const descricao = document.getElementById('descricao').value;
@@ -239,7 +239,7 @@ document.getElementById('editFormPG').addEventListener('submit', async function(
 
    
 
-    const id = this.dataset.editing; // Obter o ID da forma de pagamento a ser editada
+    const id = this.dataset.editing; 
 
     try {
         const response = await fetch(`http://localhost:3009/formasPagamento/alterar/${id}`, {
@@ -254,8 +254,8 @@ document.getElementById('editFormPG').addEventListener('submit', async function(
 
         if (response.ok) {
             alert("Forma de pagamento atualizada com sucesso!");
-            loadFormasPagamento(); // Recarregar as formas de pagamento
-            togglePopupVisibility(false); // Fechar o pop-up após a edição
+            loadFormasPagamento(); 
+            togglePopupVisibility(false); // Fechar o pop-up 
         } else {
             alert(result.msg || "Erro ao atualizar forma de pagamento.");
         }
@@ -281,7 +281,7 @@ function deleteFormaPagamento(id) {
         return response.json();
     })
     .then(data => {
-        // Após a exclusão, remover a linha da tabela
+        
         const row = document.querySelector(`a[data-id="${id}"]`).closest('tr');
         row.remove();
         alert("Forma de pagamento deletada com sucesso!");
@@ -293,25 +293,25 @@ function deleteFormaPagamento(id) {
 }
 
 
-// Função para alternar a visibilidade do pop-up
+
 function togglePopupVisibility(visible) {
     const popup = document.getElementById('editPopup');
     if (visible) {
-        popup.style.display = 'block'; // Exibir o pop-up
+        popup.style.display = 'block'; 
     } else {
-        popup.style.display = 'none'; // Ocultar o pop-up
+        popup.style.display = 'none'; 
     }
 }
 
-// Função para fechar o pop-up ao clicar no "X"
+
 document.getElementById('closePopup').addEventListener('click', function() {
-    togglePopupVisibility(false); // Oculta o pop-up
+    togglePopupVisibility(false); 
 });
 
-// Opcional: Fecha o pop-up quando o usuário clica fora do conteúdo
+
 window.addEventListener('click', function(event) {
     const popup = document.getElementById('editPopup');
     if (event.target === popup) {
-        togglePopupVisibility(false); // Fecha o pop-up se o clique for fora do conteúdo
+        togglePopupVisibility(false); 
     }
 });

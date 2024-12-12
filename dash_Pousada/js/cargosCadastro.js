@@ -1,24 +1,24 @@
-// Aguardando o envio do formulário de cadastro de cargos
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-  event.preventDefault();  // Previne o comportamento padrão de envio do formulário
 
-  // Captura os dados dos campos do formulário
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault();  
+
+ 
   const nomeCargo = document.getElementById('NomeCargo').value;
   const salario = document.getElementById('Salario').value;
   const descricao = document.getElementById('Descricao').value;
 
-  // Validação de campos obrigatórios
+
   if (!nomeCargo || !salario || !descricao) {
       alert('Todos os campos são obrigatórios!');
       return;
   }
 
-  // Monta o objeto com os dados do cargo
+
   const cargoData = {
       NomeCargo: nomeCargo,
       Salario: salario,
       Descricao: descricao,
-      Status: 'Ativo'  // Status do cargo (sempre ativo ao cadastrar)
+      Status: 'Ativo'  
   };
 
   // Chama a função para enviar os dados para a API

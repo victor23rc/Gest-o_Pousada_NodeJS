@@ -14,7 +14,7 @@ function mascaraTelefone(telefone) {
 }
 
 
-// Função que aplica as máscaras
+// aplica as máscaras
 function aplicarMascara(event) {
   const campo = event.target;
   if (campo.id === "cpf") {

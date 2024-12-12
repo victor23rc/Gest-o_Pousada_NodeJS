@@ -3,23 +3,23 @@ const fetchDashboardData = async () => {
     const response = await fetch('http://localhost:3009/reservas');
     const data = await response.json();
 
-    // Verifique se a resposta contém a chave "reservas" e é um array
+ 
     if (Array.isArray(data.reservas)) {
       const reservas = data.reservas;
 
-      // 1. Quantidade de pessoas alocadas
+      
       const pessoasAlocadas = reservas.reduce((total, reserva) => total + reserva.QuantidadeHospedes, 0);
 
-      // 2. Quantidade de quartos locados
+     
       const quartosLocados = new Set(reservas.map(reserva => reserva.NumeroQuarto)).size;
 
-      // 3. Quantidade de reservas
+
       const quantidadeReservas = reservas.length;
 
-      // 4. Balanço mensal (soma do valor total das reservas)
+    
       const balancoMensal = reservas.reduce((total, reserva) => total + parseFloat(reserva.Valortotal), 0).toFixed(2);
 
-      // Exibir os valores no front-end
+     
       document.getElementById('pessoasAlocadas').textContent = pessoasAlocadas;
       document.getElementById('quartosLocados').textContent = quartosLocados;
       document.getElementById('quantidadeReservas').textContent = quantidadeReservas;
@@ -32,54 +32,54 @@ const fetchDashboardData = async () => {
   }
 };
 
-// Chama a função ao carregar a página
+// carregar 
 fetchDashboardData();
 
 function confirmarSaida() {
   return confirm("Certeza que deseja sair?");
 }
 
-// Função para carregar as acomodações reservadas com seus detalhes
+// Função para carregar as acomodações reservadas
 async function carregarAcomodosReservados() {
   try {
-    // Obter a data atual no formato ISO (ex: "2024-12-08")
+  
     const dataAtual = new Date().toISOString().split('T')[0];
 
-    // Fazer requisição para a API de quartos reservados
+    
     const responseReservas = await fetch('http://localhost:3009/quartosreservados/Lista');
     if (!responseReservas.ok) {
       throw new Error('Erro ao carregar as reservas');
     }
     const reservas = await responseReservas.json();
 
-    // Obter referência para o corpo da tabela
+    
     const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ''; // Limpar a tabela antes de preencher
+    tableBody.innerHTML = '';
 
-    // Iterar sobre as reservas para preenchê-las na tabela
+    
     reservas.forEach(reserva => {
-      // Criar a linha da tabela
+      
       const row = document.createElement('tr');
 
-      // Criar células para cada informação
+    
       const cellTipoQuarto = document.createElement('td');
-      cellTipoQuarto.textContent = reserva.TipoQuarto;  // Tipo do Quarto (nome do quarto)
+      cellTipoQuarto.textContent = reserva.TipoQuarto;  
 
       const cellNumeroQuarto = document.createElement('td');
-      cellNumeroQuarto.textContent = reserva.NumeroQuarto; // Número do Quarto
+      cellNumeroQuarto.textContent = reserva.NumeroQuarto; 
 
       const cellIdReserva = document.createElement('td');
-      cellIdReserva.textContent = reserva.IDReserva; // ID da Reserva
+      cellIdReserva.textContent = reserva.IDReserva; 
 
-      // Formatando a Data de Saída para o formato DD/MM/YYYY
+
       const dataSaida = new Date(reserva.DataSaida);
-      const dataSaidaFormatada = dataSaida.toLocaleDateString('pt-BR'); // Exibe no formato DD/MM/YYYY
+      const dataSaidaFormatada = dataSaida.toLocaleDateString('pt-BR'); 
 
       const cellDataSaida = document.createElement('td');
-      cellDataSaida.textContent = dataSaidaFormatada; // DataSaida formatada
+      cellDataSaida.textContent = dataSaidaFormatada; 
 
       const cellStatus = document.createElement('td');
-      cellStatus.textContent = reserva.Status; // Status da reserva (Ocupado / Livre)
+      cellStatus.textContent = reserva.Status; 
 
       // Adicionar as células à linha
       row.appendChild(cellTipoQuarto);
@@ -98,7 +98,7 @@ async function carregarAcomodosReservados() {
   }
 }
 
-// Carregar os dados assim que a página for carregada
+// Carregar
 carregarAcomodosReservados();
 
 /////////////////// ver reserva unica 
@@ -122,21 +122,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("popupEmail").textContent = data.Email;
     document.getElementById("popupNumeroQuarto").textContent = data.NumeroQuarto;
 
-    // Detalhes do quarto
+
     document.getElementById("popupDescricaoQuarto").textContent = data.quarto.Descricao;
     document.getElementById("popupTipoQuarto").textContent = data.quarto.Tipo;
     document.getElementById("popupValorQuarto").textContent = `R$ ${parseFloat(data.quarto.Valor).toFixed(2)}`;
 
-    // Exibe o pop-up
-    reservationPopup.style.display = "flex"; // Torna o pop-up visível
+
+    reservationPopup.style.display = "flex"; // 
   }
 
-  // Função para fechar o pop-up
+
   popupClose.addEventListener("click", function () {
-    reservationPopup.style.display = "none"; // Oculta o pop-up
+    reservationPopup.style.display = "none"; // pop-up
   });
 
-  // Enviar a requisição para buscar os dados da reserva
+
   searchInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       const reservaId = searchInput.value.trim();
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /////////// token
 
-// Exemplo de requisição de login com o axios (ou fetch)
+
 async function loginUser() {
   const email = 'victor@gmail.com';
   const senha = '123';
@@ -174,9 +174,8 @@ async function loginUser() {
 
     if (response.status === 200) {
       const token = response.data.token;
-      localStorage.setItem("token", token);  // Armazena o token no localStorage
+      localStorage.setItem("token", token);  
 
-      // Agora, você pode exibir o nome do usuário ou redirecionar para a página principal
       setUserInfo();
     }
   } catch (error) {
@@ -184,23 +183,23 @@ async function loginUser() {
   }
 }
 
-// Função para configurar o nome do usuário após login
+
 function setUserInfo() {
-  const token = localStorage.getItem("token");  // Recupera o token JWT do localStorage
+  const token = localStorage.getItem("token");  
 
   if (token) {
-    const decodedToken = jwt_decode(token); // Decodifica o token
+    const decodedToken = jwt_decode(token); 
 
-    // O nome do usuário foi adicionado no payload, então podemos acessá-lo assim:
+   
     const userName = decodedToken.nome;
 
-    // Agora, você pode exibir o nome na página. Por exemplo:
+    
     const userNameElement = document.querySelector('.user-wrapper h4');
     if (userNameElement) {
-      userNameElement.textContent = userName;  // Define o nome do usuário na página
+      userNameElement.textContent = userName;  
     }
   }
 }
 
-// Chame a função para configurar o nome do usuário ao carregar a página
+
 window.onload = setUserInfo;

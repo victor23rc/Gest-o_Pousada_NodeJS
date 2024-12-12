@@ -3,13 +3,13 @@
 
 // Aguardando o envio do formulário
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Previne o comportamento padrão de envio do formulário
+    event.preventDefault();  
 
-    // Captura os dados dos campos do formulário
+    // Captura os dados 
     const nome = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const telefone = document.getElementById('telephone').value;
-    const cargo = document.getElementById('levelUsers').value;  // O valor selecionado do cargo
+    const cargo = document.getElementById('levelUsers').value;  
     const cpf = document.getElementById('cpf').value;
     const endereco = document.getElementById('address').value;
 
@@ -19,7 +19,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         return;
     }
 
-    // Monta o objeto com os dados do funcionário
+    // Monta o objeto 
     const funcionarioData = {
         NomeFuncionario: nome,
         Email: email,
@@ -27,14 +27,13 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         CPF: cpf,
         Endereco: endereco,
         IDCargo: cargo,
-        Status: 'ativo'  // Supondo que o status seja sempre 'ativo' ao cadastrar
+        Status: 'ativo'  
     };
 
-    // Chama a função para enviar os dados para a API
+ 
     cadastrarFuncionario(funcionarioData);
 });
 
-// Função para realizar a requisição POST para cadastrar o funcionário
 async function cadastrarFuncionario(funcionarioData) {
     try {
         const response = await fetch('http://localhost:3009/funcionarios/cadastrar', {
@@ -42,25 +41,25 @@ async function cadastrarFuncionario(funcionarioData) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(funcionarioData)  // Envia os dados em formato JSON
+            body: JSON.stringify(funcionarioData)  
         });
 
-        // Checa se a resposta foi bem-sucedida
+        
         if (!response.ok) {
             const errorData = await response.json();
             alert('Erro: ' + errorData.msg || 'Erro desconhecido.');
             return;
         }
 
-        // Caso a requisição seja bem-sucedida
+      
         const data = await response.json();
         alert('Funcionário cadastrado com sucesso!');
-        console.log(data);  // Opcional: Exibir a resposta da API no console ou realizar outras ações.
+        console.log(data);  
         
-        // Fechar o modal após o cadastro
+      
         document.getElementById('modalFuncionarios').style.display = 'none';
         
-        // Aqui, você pode adicionar a lógica para atualizar a lista de funcionários ou limpar o formulário.
+       
         window.location.reload();
     } catch (error) {
         console.error('Erro ao cadastrar funcionário:', error);
@@ -68,29 +67,29 @@ async function cadastrarFuncionario(funcionarioData) {
     }
 }
 
-// Função para carregar a lista de funcionários
+
 function carregarFuncionarios() {
     // URL da API
     const apiUrl = 'http://localhost:3009/funcionarios';
 
     // Fazendo a requisição para a API
     fetch(apiUrl)
-        .then(response => response.json())  // Convertendo a resposta para JSON
+        .then(response => response.json())  
         .then(funcionarios => {
-            // Obtendo o corpo da tabela onde os dados serão inseridos
+           
             const tableBody = document.getElementById('teamTableBody');
-            tableBody.innerHTML = ''; // Limpando o conteúdo antes de adicionar os dados
+            tableBody.innerHTML = ''; 
 
-            // Verificando se há funcionários para exibir
+        
             if (funcionarios.length === 0) {
                 tableBody.innerHTML = '<tr><td colspan="6">Nenhum funcionário encontrado.</td></tr>';
             } else {
-                // Iterando sobre os funcionários e criando as linhas da tabela
+
                 funcionarios.forEach(funcionario => {
-                    // Criando uma nova linha para o funcionário
+                
                     const row = document.createElement('tr');
 
-                    // Adicionando as células (td) para cada dado do funcionário
+               
                     row.innerHTML = `
                     <td>${funcionario.NomeFuncionario}</td>
                     <td>${funcionario.Telefone}</td>
@@ -105,7 +104,7 @@ function carregarFuncionarios() {
                     </td>
                 `;
                     
-                    // Adicionando a linha criada ao corpo da tabela
+               
                     tableBody.appendChild(row);
                 });
             }
@@ -115,12 +114,12 @@ function carregarFuncionarios() {
         });
 }
 
-// Função para formatar CPF
+
 function formatarCPF(cpf) {
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 }
 
-// Chamar a função para carregar os funcionários quando a página for carregada
+
 document.addEventListener('DOMContentLoaded', carregarFuncionarios);
 
 
@@ -129,36 +128,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Requisição para obter os cargos
         const response = await fetch('http://localhost:3009/cargos/Lista');
         
-        // Verifica se a resposta foi bem-sucedida
+     
         if (!response.ok) {
             throw new Error('Erro ao buscar cargos');
         }
 
-        // Converte a resposta em JSON
+       
         const cargos = await response.json();
 
-        // Obtém o select de cargos no formulário
+       
         const select = document.getElementById('levelUsers');
 
-        // Limpa qualquer conteúdo anterior (se necessário)
+       
         select.innerHTML = '';
 
-        // Adiciona a opção padrão
+       
         const defaultOption = document.createElement('option');
         defaultOption.textContent = 'Selecione um Cargo';
         defaultOption.value = '';
         select.appendChild(defaultOption);
 
-        // Preenche o select com os cargos recebidos da API
+      
         cargos.forEach(cargo => {
             const option = document.createElement('option');
-            option.value = cargo.IDCargo;  // valor que será enviado ao servidor
-            option.textContent = cargo.NomeCargo;  // texto que será exibido para o usuário
+            option.value = cargo.IDCargo;  
+            option.textContent = cargo.NomeCargo;  
             select.appendChild(option);
         });
     } catch (error) {
         console.error('Erro ao carregar cargos:', error);
-        // Você pode exibir uma mensagem para o usuário ou lidar com o erro de outra maneira
+        
     }
 });
 

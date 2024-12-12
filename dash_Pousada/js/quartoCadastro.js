@@ -58,14 +58,14 @@ function loadQuartos() {
                 acaoCell.appendChild(editIcon);
                 acaoCell.appendChild(deleteIcon);
 
-                // Adicionando as células à linha da tabela
-                row.appendChild(numeroQuartoCell); // Número do quarto
-                row.appendChild(tipoCell);         // Tipo do quarto
-                row.appendChild(descricaoCell);    // Descrição do quarto
-                row.appendChild(valorCell);        // Valor do quarto
-                row.appendChild(acaoCell);         // Ações (Editar/Excluir)
+              
+                row.appendChild(numeroQuartoCell);
+                row.appendChild(tipoCell);         
+                row.appendChild(descricaoCell);    
+                row.appendChild(valorCell);        
+                row.appendChild(acaoCell);         
 
-                // Adicionando a linha à tabela
+              
                 tableBody.appendChild(row);
             });
         })
@@ -80,18 +80,18 @@ function editQuarto(id) {
     fetch(`http://localhost:3009/quartos/${id}`)
         .then(response => response.json())
         .then(data => {
-            // Exibir o formulário de cadastro de quarto
+           
             toggleFormVisibility(true);
 
-            // Preencher o formulário com os dados do quarto
-            document.getElementById('number').value = data.NumeroQuarto;  // Número do quarto
+        
+            document.getElementById('number').value = data.NumeroQuarto;  
             document.getElementById('Valor').value = data.Valor;
             document.getElementById('roomType').value = data.Tipo;
             document.getElementById('desc').value = data.Descricao;
 
-            // Configurar o formulário para edição (marcar que estamos editando)
+
             const form = document.getElementById('registrationForm');
-            form.dataset.editing = id;  // Armazenar o ID do quarto que está sendo editado
+            form.dataset.editing = id; 
         })
         .catch(error => {
             console.error('Erro ao buscar dados para edição:', error);
@@ -99,17 +99,17 @@ function editQuarto(id) {
         });
 }
 
-// Função para alternar a visibilidade do formulário de edição
+
 function toggleFormVisibility(visible) {
     const form = document.getElementById('registrationForm');
     if (visible) {
-        form.style.display = 'block'; // Exibir o formulário
+        form.style.display = 'block'; 
     } else {
-        form.style.display = 'none'; // Ocultar o formulário
+        form.style.display = 'none'; 
     }
 }
 
-// Função para excluir o quarto
+
 function deleteQuarto(id) {
     fetch(`http://localhost:3009/quartos/deletar/${id}`, {
         method: 'DELETE',
@@ -121,7 +121,7 @@ function deleteQuarto(id) {
         return response.json();
     })
     .then(data => {
-        // Após a exclusão, remover a linha da tabela
+       
         const row = document.querySelector(`a[data-id="${id}"]`).closest('tr');
         row.remove();
         alert("Quarto deletado com sucesso!");
@@ -132,26 +132,26 @@ function deleteQuarto(id) {
     });
 }
 
-// Função para cadastrar um novo quarto
-document.getElementById("registrationForm").addEventListener("submit", function (event) {
-    event.preventDefault();  // Previne o envio padrão do formulário
 
-    // Obtém os valores dos campos
+document.getElementById("registrationForm").addEventListener("submit", function (event) {
+    event.preventDefault(); 
+
+ 
     const numeroQuarto = document.getElementById("number").value;
     const valor = document.getElementById("Valor").value;
     const tipo = document.getElementById("roomType").value;
     const descricao = document.getElementById("desc").value;
 
-    // Verificando se os campos foram preenchidos
+
     if (!numeroQuarto || !valor || !tipo || !descricao) {
         alert("Todos os campos são obrigatórios!");
         return;
     }
 
-    // Cria o objeto com os dados a serem enviados
+
     const roomData = {
         NumeroQuarto: numeroQuarto,
-        Valor: parseFloat(valor),  // Certificando-se que o valor é um número
+        Valor: parseFloat(valor),  
         Tipo: tipo,
         Descricao: descricao
     };
@@ -167,11 +167,11 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     .then(response => response.json())
     .then(data => {
         if (data.msg) {
-            alert(data.msg);  // Exibe mensagem de sucesso ou erro
+            alert(data.msg); 
         } else {
             alert("Quarto cadastrado com sucesso!");
-            loadQuartos(); // Recarregar os quartos cadastrados
-            document.getElementById('registrationForm').reset(); // Limpar o formulário
+            loadQuartos(); 
+            document.getElementById('registrationForm').reset(); 
         }
     })
     .catch(error => {
@@ -180,7 +180,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     });
 });
 
-// Carregar os quartos assim que a página for carregada
+
 document.addEventListener('DOMContentLoaded', () => {
     loadQuartos();
 });

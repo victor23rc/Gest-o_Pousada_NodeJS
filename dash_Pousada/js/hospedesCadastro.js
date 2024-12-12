@@ -43,7 +43,7 @@ function carregarHospedes() {
   
   // Função para cadastrar um hóspede
   function cadastrarHospede(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault(); 
   
     const form = event.target;
     const formData = new FormData(form);
